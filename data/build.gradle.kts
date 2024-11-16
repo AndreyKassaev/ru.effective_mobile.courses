@@ -34,4 +34,8 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+
+    //DI
+    // https://mvnrepository.com/artifact/io.insert-koin/koin-core
+    implementation(libs.koin.core)
 }
