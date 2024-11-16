@@ -11,3 +11,9 @@ kotlin {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
+dependencies {
+    //DI
+    // https://mvnrepository.com/artifact/io.insert-koin/koin-core
+    implementation(libs.koin.core)
+
+}
