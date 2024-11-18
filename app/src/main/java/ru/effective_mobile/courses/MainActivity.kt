@@ -10,8 +10,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.favorite_screen)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.favorite_screen_id)) { v, insets ->
+        setContentView(R.layout.account_screen)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account_screen_id)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
