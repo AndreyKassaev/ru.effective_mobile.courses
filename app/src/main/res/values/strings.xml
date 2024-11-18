@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Courses</string>
+    <string name="search_courses">Search courses…</string>
+    <string name="search_icon_button_filter">filter</string>
+    <string name="main_screen_sort">По дате добавления</string>
+    <string name="navigation_bar_main">Главная</string>
+    <string name="favorites">Избранное</string>
+    <string name="account">Аккаунт</string>
+    <string name="RUB">₽</string>
+    <string name="more_details">Подробнее</string>
 </resources>
