@@ -1,20 +1,24 @@
 package ru.effective_mobile.courses
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import ru.effective_mobile.courses.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.account_screen)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account_screen_id)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
+
+        navController = Navigation.findNavController(this, R.id.navHostFragment)
+        setupWithNavController(binding.bottomNavigationView, navController)
+
     }
 }

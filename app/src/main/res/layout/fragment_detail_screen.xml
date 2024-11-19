@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    tools:context=".ui.DetailScreenFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/courseDetailImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/courseDetailImage">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/card_detail_action_round_background"
+                    android:contentDescription="markToBookmarks"
+                    android:padding="6dp"
+                    android:src="@drawable/bookmark_dark" />
+
+                <ImageView
+                    android:id="@+id/courseDetailGoUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/card_detail_action_round_background"
+                    android:clickable="true"
+                    android:contentDescription="goUp"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:src="@drawable/arrow_left" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/courseDetailImage"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/round_card_icon_background"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="4dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/star_fill" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="4.8"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_card_icon_background"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="4dp"
+                    android:text="22 Мая 2024"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/courseDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="COURSE TITLE"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/courseDetailImage" />
+
+            <ImageView
+                android:id="@+id/courseDetailVendorIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/course_vendor_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/courseDetailTitle" />
+
+            <TextView
+                android:id="@+id/courseDetailVendorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Автор"
+                android:textColor="@color/white_50"
+                app:layout_constraintStart_toEndOf="@id/courseDetailVendorIcon"
+                app:layout_constraintTop_toTopOf="@id/courseDetailVendorIcon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="COURSE VENDOR"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@id/courseDetailVendorIcon"
+                app:layout_constraintTop_toBottomOf="@id/courseDetailVendorName" />
+
+            <Button
+                android:id="@+id/startCourseBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/green"
+                android:text="@string/start_course"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/courseDetailVendorIcon" />
+
+            <Button
+                android:id="@+id/goToCourseVendorBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/dark_grey"
+                android:text="@string/goto_platform"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/startCourseBtn" />
+
+            <TextView
+                android:id="@+id/courseDetailAboutTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="12dp"
+                android:text="ABOUT COURSE"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/goToCourseVendorBtn" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/about_course_mock"
+                android:textColor="@color/white_70"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/courseDetailAboutTV" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <FrameLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content">-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:scaleType="centerCrop"-->
+        <!--                    android:src="@drawable/cover" />-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="end|top"-->
+        <!--                    android:layout_margin="8dp"-->
+        <!--                    android:background="@drawable/card_detail_action_round_background"-->
+        <!--                    android:padding="6dp"-->
+        <!--                    android:src="@drawable/bookmark_dark" />-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="start|top"-->
+        <!--                    android:layout_marginTop="16dp"-->
+        <!--                    android:layout_margin="8dp"-->
+        <!--                    android:background="@drawable/card_detail_action_round_background"-->
+        <!--                    android:padding="6dp"-->
+        <!--                    android:src="@drawable/arrow_left" />-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="start|bottom"-->
+        <!--                    android:layout_margin="8dp"-->
+        <!--                    android:orientation="horizontal">-->
+
+        <!--                    <LinearLayout-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginRight="4dp"-->
+        <!--                        android:background="@drawable/round_card_icon_background"-->
+        <!--                        android:orientation="horizontal"-->
+        <!--                        android:paddingHorizontal="6dp"-->
+        <!--                        android:paddingVertical="4dp">-->
+
+        <!--                        <ImageView-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_gravity="center"-->
+        <!--                            android:layout_marginRight="4dp"-->
+        <!--                            android:src="@drawable/star_fill" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_gravity="center"-->
+        <!--                            android:text="4.8"-->
+        <!--                            android:textColor="@color/white" />-->
+        <!--                    </LinearLayout>-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_gravity="center"-->
+        <!--                        android:background="@drawable/round_card_icon_background"-->
+        <!--                        android:paddingHorizontal="6dp"-->
+        <!--                        android:paddingVertical="4dp"-->
+        <!--                        android:text="22 Мая 2024"-->
+        <!--                        android:textColor="@color/white" />-->
+
+        <!--                </LinearLayout>-->
+        <!--            </FrameLayout>-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="COURSE TITLE"-->
+        <!--                android:textColor="@color/white"-->
+        <!--                android:layout_margin="16dp" />-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="horizontal"-->
+        <!--                android:layout_marginHorizontal="16dp">-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:src="@drawable/course_vendor_image" />-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:layout_marginLeft="12dp"-->
+        <!--                    android:layout_marginBottom="28dp">-->
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:textColor="@color/white_50"-->
+        <!--                        android:text="Автор" />-->
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:textColor="@color/white"-->
+        <!--                        android:text="COURSE VENDOR"/>-->
+        <!--                </LinearLayout>-->
+
+        <!--            </LinearLayout>-->
+
+        <!--            <Button-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="@string/start_course"-->
+        <!--                android:layout_marginHorizontal="16dp"-->
+        <!--                android:backgroundTint="@color/green"-->
+        <!--                android:textColor="@color/white"/>-->
+        <!--            <Space-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="4dp"/>-->
+        <!--            <Button-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="@string/goto_platform"-->
+        <!--                android:layout_marginHorizontal="16dp"-->
+        <!--                android:backgroundTint="@color/dark_grey"-->
+        <!--                android:textColor="@color/white"/>-->
+        <!--            <Space-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="28dp"/>-->
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="ABOUT COURSE"-->
+        <!--                android:textColor="@color/white"-->
+        <!--                android:layout_marginHorizontal="16dp"-->
+        <!--                android:layout_marginBottom="12dp"/>-->
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="@string/about_course_mock"-->
+        <!--                android:textColor="@color/white_70"-->
+        <!--                android:layout_marginHorizontal="16dp"/>-->
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="@string/about_course_mock"-->
+        <!--                android:textColor="@color/white_70"-->
+        <!--                android:layout_marginHorizontal="16dp"/>-->
+
+        <!--        </LinearLayout>-->
+    </ScrollView>
+</FrameLayout>
