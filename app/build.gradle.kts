@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -60,7 +61,10 @@ dependencies {
     // Views/Fragments integration
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
-
     // Feature module support for Fragments
     implementation(libs.androidx.navigation.dynamic.features.fragment)
+
+    //Coil
+    implementation(libs.coil)
+
 }
