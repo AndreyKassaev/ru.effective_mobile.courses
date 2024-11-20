@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import ru.effective_mobile.courses.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import ru.effective_mobile.courses.databinding.FragmentMainScreenBinding
+import ru.effective_mobile.courses.recycle_view.CourseCardModel
+import ru.effective_mobile.courses.recycle_view.CourseRvAdapter
 
 class MainScreenFragment : Fragment() {
 
@@ -17,12 +18,18 @@ class MainScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainScreenBinding.inflate(inflater)
-
-        binding.sortByText.setOnClickListener {
-            findNavController().navigate(R.id.action_mainScreenFragment_to_detailScreenFragment)
-        }
+        binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.mainScreenRV.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = CourseRvAdapter(
+                itemList = MutableList(20) { CourseCardModel.mock },
+            )
+        }
+    }
 }

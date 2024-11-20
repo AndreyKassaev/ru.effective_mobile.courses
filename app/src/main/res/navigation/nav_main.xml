@@ -14,7 +14,11 @@
         android:id="@+id/detailScreenFragment"
         android:name="ru.effective_mobile.courses.ui.DetailScreenFragment"
         android:label="fragment_detail_screen"
-        tools:layout="@layout/fragment_detail_screen" />
+        tools:layout="@layout/fragment_detail_screen">
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteScreenFragment"
         android:name="ru.effective_mobile.courses.ui.FavoriteScreenFragment"
