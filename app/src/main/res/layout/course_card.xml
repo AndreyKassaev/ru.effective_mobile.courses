@@ -54,7 +54,7 @@
                         android:layout_marginRight="4dp"
                         />
                     <TextView
-                        android:id="@+id/cardDetailRateTV"
+                        android:id="@+id/card_detail_rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4.8"
@@ -64,7 +64,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/cardDetailDateTV"
+                android:id="@+id/card_detail_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="22 Мая 2024"
@@ -83,7 +83,7 @@
         android:orientation="vertical"
         android:layout_margin="16dp">
         <TextView
-            android:id="@+id/cardDetailTitleTV"
+            android:id="@+id/cardDetailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CARD TITLE CARD TITLE CARD TITLE CARD TITLE CARD TITLE "
@@ -93,7 +93,7 @@
             android:layout_marginBottom="12dp"
             />
         <TextView
-            android:id="@+id/cardDetailTextBodyTV"
+            android:id="@+id/cardDetailAds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY CARD BODY "
@@ -108,7 +108,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/cardDetailPriceTV"
+                android:id="@+id/card_detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="999"
