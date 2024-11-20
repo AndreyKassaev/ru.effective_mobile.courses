@@ -5,23 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.effective_mobile.courses.databinding.FragmentDetailScreenBinding
+import ru.effective_mobile.courses.viewmodel.DetailScreenVM
 
-class DetailScreenFragment : Fragment() {
+internal class DetailScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailScreenBinding
-    private val args: DetailScreenFragmentArgs by navArgs()
+    private val viewModel by viewModel<DetailScreenVM>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailScreenBinding.inflate(inflater, container, false)
-        binding.apply {
-            courseDetailTitle.text = args.courseId
-        }
         return binding.root
     }
 
@@ -30,7 +31,10 @@ class DetailScreenFragment : Fragment() {
         binding.courseDetailGoUp.setOnClickListener {
             findNavController().popBackStack()
         }
-
+        lifecycleScope.launch {
+            viewModel.getCourseFlow().collectLatest { course ->
+                binding.courseDetailTitle.text = course.title
+            }
+        }
     }
-
 }

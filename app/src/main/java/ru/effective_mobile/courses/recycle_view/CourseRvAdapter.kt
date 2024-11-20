@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.effective_mobile.courses.R
 import ru.effective_mobile.courses.databinding.CourseCardBinding
+import ru.effective_mobile.courses.model.Course
 import ru.effective_mobile.courses.ui.MainScreenFragmentDirections
 
 class CourseRvAdapter(
-    val itemList: MutableList<CourseCardModel>,
+    val itemList: MutableList<Course>,
 ) : RecyclerView.Adapter<CourseRvAdapter.ViewHolder>() {
 
     private lateinit var binding: CourseCardBinding
@@ -32,7 +33,7 @@ class CourseRvAdapter(
 
     inner class ViewHolder(itemView: CourseCardBinding) : RecyclerView.ViewHolder(itemView.root) {
 
-        fun bind(item: CourseCardModel) {
+        fun bind(item: Course) {
             binding.apply {
                 cardDetailTitleTV.text = item.title
                 cardDetailTextBodyTV.text = item.textBody
