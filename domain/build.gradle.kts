@@ -16,4 +16,8 @@ dependencies {
     // https://mvnrepository.com/artifact/io.insert-koin/koin-core
     implementation(libs.koin.core)
 
+    //Flow
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
+    implementation(libs.kotlinx.coroutines.core)
+
 }

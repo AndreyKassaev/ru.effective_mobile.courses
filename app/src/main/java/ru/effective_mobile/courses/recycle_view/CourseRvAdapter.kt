@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.effective_mobile.courses.R
 import ru.effective_mobile.courses.databinding.CourseCardBinding
-import ru.effective_mobile.courses.model.Course
+import ru.effective_mobile.courses.domain.model.Course
 import ru.effective_mobile.courses.ui.MainScreenFragmentDirections
 
 class CourseRvAdapter(
-    val itemList: MutableList<Course>,
+    val itemList: List<Course>,
 ) : RecyclerView.Adapter<CourseRvAdapter.ViewHolder>() {
 
     private lateinit var binding: CourseCardBinding
@@ -35,11 +35,11 @@ class CourseRvAdapter(
 
         fun bind(item: Course) {
             binding.apply {
-                cardDetailTitleTV.text = item.title
-                cardDetailTextBodyTV.text = item.textBody
-                cardDetailPriceTV.text = item.price
-                cardDetailRateTV.text = item.rate
-                cardDetailDateTV.text = item.date
+                cardDetailTitle.text = item.title
+                cardDetailAds.text = item.ads
+                cardDetailPrice.text = item.price
+                cardDetailRate.text = item.rate
+                cardDetailDate.text = item.date
                 cardDetailFavoriteIcon.setImageResource(if (item.isFavorite) R.drawable.bookmark_fill else R.drawable.bookmark_card)
                 cardDetailImageUrl.load(item.imageUrl) {
                     crossfade(true)
@@ -48,13 +48,13 @@ class CourseRvAdapter(
                 }
             }
 
-            val direction =
-                MainScreenFragmentDirections.actionMainScreenFragmentToDetailScreenFragment(item.title)
             binding.courseCardContainer.setOnClickListener {
-                it.findNavController().navigate(direction)
+                it.findNavController().navigate(
+                    MainScreenFragmentDirections.actionMainScreenFragmentToDetailScreenFragment(
+                        item.title
+                    )
+                )
             }
         }
-
     }
-
 }

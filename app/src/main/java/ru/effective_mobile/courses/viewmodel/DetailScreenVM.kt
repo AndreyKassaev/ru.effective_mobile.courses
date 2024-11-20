@@ -2,21 +2,15 @@ package ru.effective_mobile.courses.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import ru.effective_mobile.courses.model.Course
+import ru.effective_mobile.courses.domain.usecase.course.GetCourseDetailUseCase
 
 internal class DetailScreenVM(
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
+    private val getCourseDetailUseCase: GetCourseDetailUseCase
 ) : ViewModel() {
 
-    private val courseMutable = MutableStateFlow<Course>(getCourse())
-    private val course: StateFlow<Course> = courseMutable
+    fun getCourseFlow() = getCourseDetailUseCase(
+        courseId = savedStateHandle.get<String>("courseId")
+    )
 
-    fun getCourseFlow() = course
-
-    private fun getCourse(): Course {
-        //useCase(savedStateHandle.get<String>("courseId")) -> repo
-        return Course.mock
-    }
 }

@@ -69,7 +69,7 @@ dependencies {
 
     //lifecycleScope
     // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
 
 }
