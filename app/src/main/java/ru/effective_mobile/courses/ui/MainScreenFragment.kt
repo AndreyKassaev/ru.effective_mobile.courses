@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.effective_mobile.courses.databinding.FragmentMainScreenBinding
-import ru.effective_mobile.courses.recycle_view.CourseCardModel
+import ru.effective_mobile.courses.model.Course
 import ru.effective_mobile.courses.recycle_view.CourseRvAdapter
+import ru.effective_mobile.courses.viewmodel.MainScreenVM
 
-class MainScreenFragment : Fragment() {
+internal class MainScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentMainScreenBinding
+    private val viewModel by viewModel<MainScreenVM>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +31,7 @@ class MainScreenFragment : Fragment() {
         binding.mainScreenRV.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = CourseRvAdapter(
-                itemList = MutableList(20) { CourseCardModel.mock },
+                itemList = MutableList(20) { Course.mock },
             )
         }
     }

@@ -1,6 +1,6 @@
-package ru.effective_mobile.courses.recycle_view
+package ru.effective_mobile.courses.model
 
-data class CourseCardModel(
+data class Course(
     val title: String,
     val textBody: String,
     val imageUrl: String,
@@ -10,7 +10,7 @@ data class CourseCardModel(
     val isFavorite: Boolean
 ) {
     companion object {
-        val mock = CourseCardModel(
+        val mock = Course(
             title = "title",
             textBody = "textBody",
             imageUrl = "https://kassaev.com/media/android_14.png",

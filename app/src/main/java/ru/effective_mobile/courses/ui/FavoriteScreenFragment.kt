@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.effective_mobile.courses.databinding.FragmentFavoriteScreenBinding
-import ru.effective_mobile.courses.recycle_view.CourseCardModel
+import ru.effective_mobile.courses.model.Course
 import ru.effective_mobile.courses.recycle_view.CourseRvAdapter
+import ru.effective_mobile.courses.viewmodel.FavoriteScreenVM
 
-class FavoriteScreenFragment : Fragment() {
+internal class FavoriteScreenFragment : Fragment() {
 
-    lateinit var binding: FragmentFavoriteScreenBinding
+    private lateinit var binding: FragmentFavoriteScreenBinding
+    private val viewModel by viewModel<FavoriteScreenVM>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +26,7 @@ class FavoriteScreenFragment : Fragment() {
 
         binding.favoriteScreenRv.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = CourseRvAdapter(MutableList(20) { CourseCardModel.mock })
+            adapter = CourseRvAdapter(MutableList(20) { Course.mock })
         }
 
         return binding.root
