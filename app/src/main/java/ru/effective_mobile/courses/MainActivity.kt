@@ -19,7 +19,5 @@ class MainActivity : AppCompatActivity() {
 
         navController = Navigation.findNavController(this, R.id.navHostFragment)
         setupWithNavController(binding.bottomNavigationView, navController)
-
     }
-
 }
