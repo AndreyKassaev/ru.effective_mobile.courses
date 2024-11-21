@@ -6,17 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import courseAdapterDelegate
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.effective_mobile.courses.databinding.FragmentMainScreenBinding
-import ru.effective_mobile.courses.recycle_view.CourseRvAdapter
+import ru.effective_mobile.courses.model.CourseMapper.mapToAppCourseList
+import ru.effective_mobile.courses.model.DisplayableItem
 import ru.effective_mobile.courses.viewmodel.MainScreenVM
 
 internal class MainScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentMainScreenBinding
+    private lateinit var adapterMain: ListDelegationAdapter<List<DisplayableItem>>
     private val viewModel by viewModel<MainScreenVM>()
 
     override fun onCreateView(
@@ -24,19 +29,30 @@ internal class MainScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adapterMain = ListDelegationAdapter(
+            courseAdapterDelegate { courseId ->
+                findNavController().navigate(
+                    MainScreenFragmentDirections.actionMainScreenFragmentToDetailScreenFragment(
+                        courseId
+                    )
+                )
+            }
+        )
 
         lifecycleScope.launch {
             viewModel.getCourseListFlow().collectLatest { courseList ->
                 binding.mainScreenRV.apply {
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = CourseRvAdapter(
-                        itemList = courseList
-                    )
+                    adapter = adapterMain
                 }
+                adapterMain.items = mapToAppCourseList(courseList)
             }
         }
-
-        return binding.root
     }
-
 }

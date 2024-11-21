@@ -71,5 +71,8 @@ dependencies {
     // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
+    //AdapterDelegates
+    // https://mvnrepository.com/artifact/com.hannesdorfmann/adapterdelegates4-kotlin-dsl-viewbinding
+    implementation(libs.adapterdelegates4.kotlin.dsl.viewbinding)
 
 }

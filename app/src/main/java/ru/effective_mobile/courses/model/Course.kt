@@ -1,4 +1,6 @@
-package ru.effective_mobile.courses.domain.model
+package ru.effective_mobile.courses.model
+
+sealed class DisplayableItem
 
 data class Course(
     val courseId: String,
@@ -11,7 +13,7 @@ data class Course(
     val date: String,
     val isFavorite: Boolean,
     val vendor: CourseVendor
-) {
+) : DisplayableItem() {
     companion object {
         val mock = Course(
             courseId = "courseId",
