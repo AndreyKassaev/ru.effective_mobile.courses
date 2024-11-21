@@ -12,15 +12,15 @@ import ru.effective_mobile.courses.domain.usecase.course.GetCourseDetailUseCaseI
 
 val domainModule = module {
     factory<GetAllAvailableCoursesUseCase> {
-        GetAllAvailableCoursesUseCaseImpl()
+        GetAllAvailableCoursesUseCaseImpl(get())
     }
     factory<GetAllFavoriteCoursesUseCase> {
-        GetAllFavoriteCoursesUseCaseImpl()
+        GetAllFavoriteCoursesUseCaseImpl(get())
     }
     factory<GetAllPersonalCoursesUseCase> {
-        GetAllPersonalCoursesUseCaseImpl()
+        GetAllPersonalCoursesUseCaseImpl(get())
     }
     factory<GetCourseDetailUseCase> {
-        GetCourseDetailUseCaseImpl()
+        GetCourseDetailUseCaseImpl(get())
     }
 }

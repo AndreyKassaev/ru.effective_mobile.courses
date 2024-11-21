@@ -1,17 +1,17 @@
 package ru.effective_mobile.courses.domain.usecase.course
 
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 import ru.effective_mobile.courses.domain.model.Course
+import ru.effective_mobile.courses.domain.repository.CourseRepository
 
 interface GetAllAvailableCoursesUseCase {
     operator fun invoke(): Flow<List<Course>>
 }
 
-internal class GetAllAvailableCoursesUseCaseImpl : GetAllAvailableCoursesUseCase {
+internal class GetAllAvailableCoursesUseCaseImpl(
+    private val courseRepository: CourseRepository
+) : GetAllAvailableCoursesUseCase {
     override operator fun invoke() =
-        flowOf(
-            List(100) { Course.mock }
-        )
+        courseRepository.getAllAvailableCourses()
 
 }
