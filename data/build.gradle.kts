@@ -38,4 +38,7 @@ dependencies {
     //DI
     // https://mvnrepository.com/artifact/io.insert-koin/koin-core
     implementation(libs.koin.core)
+
+    //Flow
+    implementation(libs.kotlinx.coroutines.core)
 }
