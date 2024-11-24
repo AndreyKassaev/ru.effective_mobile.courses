@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    kotlin("plugin.serialization") version "2.0.21"
+    id("androidx.room")
+    id("kotlin-kapt")
 }
 
 android {
@@ -30,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
@@ -37,8 +44,27 @@ dependencies {
 
     //DI
     // https://mvnrepository.com/artifact/io.insert-koin/koin-core
-    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 
     //Flow
     implementation(libs.kotlinx.coroutines.core)
+
+    //Ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+
+    //Serialization
+    implementation(libs.kotlinx.serialization.json)
+
+    //backport of the java.time
+    implementation(libs.threetenabp)
+
+    //Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    //DataStore
+    implementation(libs.androidx.datastore.preferences)
+
 }

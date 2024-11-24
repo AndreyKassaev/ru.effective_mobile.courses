@@ -5,7 +5,7 @@ import ru.effective_mobile.courses.domain.model.CourseVendor as DomainCourseVend
 import ru.effective_mobile.courses.model.Course as AppCourse
 import ru.effective_mobile.courses.model.CourseVendor as AppCourseVendor
 
-object CourseMapper {
+internal object CourseMapper {
 
     fun mapToAppCourseVendor(domainCourseVendor: DomainCourseVendor): AppCourseVendor =
         AppCourseVendor(
@@ -30,7 +30,8 @@ object CourseMapper {
             rate = domainCourse.rate,
             date = domainCourse.date,
             isFavorite = domainCourse.isFavorite,
-            vendor = mapToAppCourseVendor(domainCourse.vendor)
+            vendor = mapToAppCourseVendor(domainCourse.vendor),
+            canonicalUrl = domainCourse.canonicalUrl
         )
 
     fun mapToDomainCourse(appCourse: AppCourse): DomainCourse =
@@ -44,7 +45,8 @@ object CourseMapper {
             rate = appCourse.rate,
             date = appCourse.date,
             isFavorite = appCourse.isFavorite,
-            vendor = mapToDomainCourseVendor(appCourse.vendor)
+            vendor = mapToDomainCourseVendor(appCourse.vendor),
+            canonicalUrl = appCourse.canonicalUrl
         )
 
     fun mapToAppCourseList(domainCourses: List<DomainCourse>): List<AppCourse> =
