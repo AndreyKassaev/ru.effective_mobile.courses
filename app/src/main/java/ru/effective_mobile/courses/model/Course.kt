@@ -12,11 +12,12 @@ data class Course(
     val rate: String,
     val date: String,
     val isFavorite: Boolean,
-    val vendor: CourseVendor
+    val vendor: CourseVendor,
+    val canonicalUrl: String
 ) : DisplayableItem() {
     companion object {
         val mock = Course(
-            courseId = "courseId",
+            courseId = "-1",
             title = "title",
             desc = "desc",
             ads = "ads",
@@ -25,7 +26,8 @@ data class Course(
             rate = "rate",
             date = "date",
             isFavorite = true,
-            vendor = CourseVendor.mock
+            vendor = CourseVendor.mock,
+            canonicalUrl = "canonicalUrl"
         )
     }
 }

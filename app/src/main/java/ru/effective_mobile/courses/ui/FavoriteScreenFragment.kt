@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,7 @@ internal class FavoriteScreenFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteScreenBinding
     private lateinit var adapterFavorite: ListDelegationAdapter<List<DisplayableItem>>
     private val viewModel by viewModel<FavoriteScreenVM>()
+    private var scrollPosition: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,9 +53,28 @@ internal class FavoriteScreenFragment : Fragment() {
                     layoutManager = LinearLayoutManager(requireContext())
                     adapter = adapterFavorite
                 }
-                adapterFavorite.items = mapToAppCourseList(courseList)
+                adapterFavorite.items = courseList
+                adapterFavorite.notifyDataSetChanged()
             }
         }
+    }
 
+    override fun onPause() {
+        super.onPause()
+        val layoutManager = binding.favoriteScreenRv.layoutManager as LinearLayoutManager
+        scrollPosition = layoutManager.findFirstCompletelyVisibleItemPosition()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.favoriteScreenRv.viewTreeObserver.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (binding.favoriteScreenRv.layoutManager != null) {
+                    binding.favoriteScreenRv.scrollToPosition(scrollPosition)
+                    binding.favoriteScreenRv.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                }
+            }
+        })
     }
 }

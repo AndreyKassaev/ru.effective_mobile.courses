@@ -7,7 +7,13 @@
     android:background="@color/dark"
     tools:context=".ui.DetailScreenFragment">
 
+    <ProgressBar
+        android:id="@+id/courseDetailProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ScrollView
+        android:id="@+id/courseDetailScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -180,7 +186,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginBottom="12dp"
-                android:text="ABOUT COURSE"
+                android:text="@string/courseAboutTV"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/goToCourseVendorBtn" />

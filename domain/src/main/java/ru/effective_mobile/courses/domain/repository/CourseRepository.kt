@@ -5,11 +5,15 @@ import ru.effective_mobile.courses.domain.model.Course
 
 interface CourseRepository {
 
-    fun getAllAvailableCourses(): Flow<List<Course>>
+    suspend fun getAllAvailableCourseList()
 
     fun getAllFavoriteCourses(): Flow<List<Course>>
 
     fun getAllPersonalCourses(): Flow<List<Course>>
 
-    fun getCourseDetail(courseId: String?): Flow<Course>
+    fun getCourseDetail(courseId: String): Flow<Course>
+
+    suspend fun toggleFavorite(courseId: String)
+
+    fun getAllAvailableCourseListFlow(): Flow<List<Course>>
 }

@@ -40,6 +40,15 @@
         app:layout_constraintBottom_toBottomOf="@id/sortByText"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/mainScreenRVProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/mainScreenRV"
+        app:layout_constraintEnd_toEndOf="@id/mainScreenRV"
+        app:layout_constraintStart_toStartOf="@id/mainScreenRV"
+        app:layout_constraintTop_toTopOf="@id/mainScreenRV" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainScreenRV"
         android:layout_width="match_parent"
