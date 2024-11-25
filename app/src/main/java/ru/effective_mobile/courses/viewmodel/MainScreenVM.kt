@@ -13,6 +13,12 @@ internal class MainScreenVM(
     private val getAllAvailableCourseListFlowUseCase: GetAllAvailableCourseListFlowUseCase
 ) : ViewModel() {
 
+    init {
+        viewModelScope.launch {
+            getAllAvailableCourseListUseCase()
+        }
+    }
+
     fun getAllAvailableCourseListFlow() = getAllAvailableCourseListFlowUseCase().map {
         mapToAppCourseList(it)
     }
